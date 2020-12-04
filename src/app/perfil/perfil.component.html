@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="row mt-3">
+
+    <!-- Mostramos los usuarios creados, haciendo click encima de uno de ellos se nos mostrara su informacion -->
+    <div class="col">
+      <div class="list-group">
+        <a *ngFor="let usuario of usuariosArray" class="list-group-item list-group-item-action"
+          (click)="selectUsuario(usuario)">{{usuario.nombre}}</a>
+      </div>
+
+      <br>
+
+      <!-- Boton para crear un usuario -->
+      <button type="button" class="btn btn-info" (click)="isCreatingNewUsu = true">Añadir usuario</button>
+
+    </div>
+
+    <!-- Al editar un usuario nos llevara al componente detalles usuario donde se guardaran los cambios -->
+    <div *ngIf="isCreatingNewUsu === false" class="col">
+      <app-detalles-usuario [usuario]="usuarioSelected" (saveUsuario)="updateUsuario($event)"></app-detalles-usuario>
+    </div>
+
+    <!-- Al crear un usuario nos llevara a lista perfiles donde se creara el usuario -->
+    <div *ngIf="isCreatingNewUsu === true" class="col">
+
+      <app-lista-perfiles (usuarioEvent)="addUsuario($event)"></app-lista-perfiles>
+
+    </div>
+
+  </div>
+</div>

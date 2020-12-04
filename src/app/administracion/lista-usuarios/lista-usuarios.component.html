@@ -1,0 +1,18 @@
+<div class="container">
+
+  <!-- Creamos un for para que recorra la array -->
+  <div *ngFor="let usuario of usuariosArray; let i=index">
+
+    <br>
+    <!-- Mostramos el nombre y apellidos del usuario -->
+    {{usuario.nombre}} {{usuario.apellidos}}
+
+    <!-- Mediante este boto podemos eliminar al usuario -->
+    <button type="button" class="btn btn-danger" (click)="deleteUsuario(i)">Eliminar</button>
+
+  </div>
+
+</div>
+
+
+

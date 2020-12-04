@@ -1,0 +1,44 @@
+<div *ngIf="usuario !== null" class="card" style="width: 18rem;">
+
+  <div class="card-body">
+
+    <!-- Cremos en el formulario en el que se mostraran los campos de cada usuario para poder editarlos -->
+    <form>
+
+      <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="nombre" [(ngModel)]="usuario.nombre">
+      </div>
+
+      <div class="form-group">
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" class="form-control" id="apellidos" name="apellidos" [(ngModel)]="usuario.apellidos">
+      </div>
+
+      <div class="form-group">
+        <label for="edad">Edad</label>
+        <input type="number" class="form-control" id="edad" name="edad" [(ngModel)]="usuario.edad">
+      </div>
+
+      <div class="form-group">
+        <label for="agility">Descripcion</label>
+        <textarea class="form-control" id="descripcion" name="descripcion" [(ngModel)]="usuario.descripcion"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="intelligence">Correo</label>
+        <input type="email" class="form-control" id="correo" name="correo" [(ngModel)]="usuario.correo">
+      </div>
+
+      <div class="form-group">
+        <label for="intelligence">Contraseña</label>
+        <input type="password" class="form-control" id="contrasena" name="contrasena" [(ngModel)]="usuario.contrasena">
+      </div>
+
+    </form>
+
+    <!-- Mediante este boton guardamos los cambios hechos -->
+    <button type="button" class="btn btn-primary" (click)="saveUsuario()">Guardar</button> &nbsp;
+  </div>
+
+</div>

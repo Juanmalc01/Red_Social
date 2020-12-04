@@ -1,0 +1,87 @@
+<!-- Formulario para crear un usuario -->
+<form [formGroup]="user">
+
+  <div class="form-group">
+    <label class="control-label col-md-2">Nombre</label>
+    <input type="text"  formControlName="nombre" placeholder="Nombre" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.nombre.errors}">
+
+    <div *ngIf="user.get('nombre').hasError('required')" class="invalid-feedback">
+      Descripcion requerida
+
+   </div>
+
+</div>
+
+<div class="form-group">
+  <label class="control-label col-md-2">Apellidos</label>
+  <input type="text" [(ngModel)]="usuario.apellidos" formControlName="apellidos" placeholder="Apellidos" class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f.apellidos.errors}">
+
+    <div *ngIf="submitted && f.apellidos.errors" class="invalid-feedback">
+        <div *ngIf="f.apellidos.errors.required">Campo vacio</div>
+   </div>
+
+</div>
+
+
+<div class="form-group">
+  <label class="control-label col-md-2">Edad</label>
+  <input type="number" [(ngModel)]="usuario.edad" formControlName="edad" placeholder="Edad" class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f.edad.errors}">
+
+    <div *ngIf="submitted && f.edad.errors" class="invalid-feedback">
+        <div *ngIf="f.edad.errors.required">Campo vacio</div>
+   </div>
+
+</div>
+
+
+<div class="form-group">
+  <label class="control-label col-md-2">Descripcion</label>
+  <textarea type="text" [(ngModel)]="usuario.descripcion" formControlName="descripcion" placeholder="Descripcion" class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors}"></textarea>
+
+    <div *ngIf="user.get('descripcion').hasError('required')" class="invalid-feedback">
+      Descripcion requerida
+
+   </div>
+
+</div>
+
+<div class="form-group">
+  <label class="control-label col-md-2">Correo</label>
+  <input type="email" [(ngModel)]="usuario.correo" formControlName="correo" placeholder="Correo" class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f.correo.errors}">
+
+    <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+        <div *ngIf="f.correo.errors.email">Campo vacio</div>
+   </div>
+
+</div>
+
+<div class="form-group">
+  <label class="control-label col-md-2">Contrasña</label>
+  <input type="password" [(ngModel)]="usuario.contrasena" formControlName="contrasena" placeholder="Contraseña" class="form-control"
+  [ngClass]="{ 'is-invalid': submitted && f.contrasena.errors}">
+
+    <div *ngIf="submitted && f.contrasena.errors" class="invalid-feedback">
+        <div *ngIf="f.contrasena.errors.required">Campo vacio</div>
+   </div>
+  </div>
+
+   <div class="form-group">
+    <label class="control-label col-md-2">Confirmar contraseña</label>
+    <input type="password" [(ngModel)]="usuario.ConfirmarContrasena" formControlName="ConfirmarContrasena" placeholder="Confirmar contraseña" class="form-control"
+    [ngClass]="{ 'is-invalid': submitted && f.ConfirmarContrasena.errors}">
+
+      <div *ngIf="submitted && f.ConfirmarContrasena.errors" class="invalid-feedback">
+          <div *ngIf="f.ConfirmarContrasena.errors.required">Campo vacio</div>
+     </div>
+    </div>
+
+  <!-- Mediante este boton guardaremos los cambios y crearemos el usuario -->
+  <button class="btn btn-primary" [disabled]="user.invalid"  (click)="enviarDatos()">Crear usuario</button>
+
+
+</form>
