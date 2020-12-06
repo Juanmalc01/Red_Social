@@ -10,10 +10,16 @@ import { Usuarios } from 'models/usuarios.model';
 })
 export class ListaPerfilesComponent implements OnInit {
 
-  newUsuario: Usuarios = null;
+      nombre: string
+      apellidos: string
+      edad:  number
+      descripcion: string
+      correo: string
+      contrasena: string
+      ConfirmarContrasena: string
 
   // Creamos un emisor de eventos que enviará el usuario creado
-  @Output() usuarioEvent: EventEmitter<Usuarios> = new EventEmitter<Usuarios>();
+  @Output() usuarioEvent = new EventEmitter<Usuarios>();
 
   //inicializo la variable formBuilder
   constructor(private formBuilder: FormBuilder) {
@@ -23,8 +29,8 @@ export class ListaPerfilesComponent implements OnInit {
       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       edad:  ['', Validators.required],
-      descripcion: ['', Validators.required,Validators.minLength(4)],
-      correo: ['', Validators.required,Validators.email],
+      descripcion: ['', [Validators.required,Validators.minLength(4)]],
+      correo: ['', [Validators.required,Validators.email]],
       contrasena: ['', Validators.required],
       ConfirmarContrasena: ['', Validators.required]
     });
@@ -48,9 +54,7 @@ export class ListaPerfilesComponent implements OnInit {
 
 
   //metodo enviar
-  enviarDatos(){
-
-    this.usuarioEvent.emit(this.newUsuario);
+  enviarDatos(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra){
 
     this.submitted = true;
     //si algun campo no cumple las condiciones
@@ -58,8 +62,29 @@ export class ListaPerfilesComponent implements OnInit {
       return;
     }
 
+
+
+    this.guardar(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra);
+
     //si todos los campos son correctos muestra la siguiente ventana emergente
-      Swal.fire('Los datos son correctos');
+      Swal.fire('Usuario creado correctamente B)');
+  }
+
+  guardar(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra): void{
+
+      this.nombre = Vnombre;
+      this.apellidos = Vapellido;
+      this.edad =  Vedad;
+      this.descripcion = Vdesc;
+      this.correo = Vemail;
+      this.contrasena = Vcontra;
+      this.ConfirmarContrasena = VConfirmContra;
+      this.enviar();
+
+  }
+
+  enviar(): void{
+    this.usuarioEvent.emit(new Usuarios (this.nombre, this.apellidos, this.edad, this.descripcion, this.correo, this.contrasena, this.ConfirmarContrasena));
   }
 
 }
