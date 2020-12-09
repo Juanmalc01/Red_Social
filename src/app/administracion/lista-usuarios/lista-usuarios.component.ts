@@ -25,6 +25,7 @@ export class ListaUsuariosComponent implements OnInit {
   deleteUsuario(i) {
     this.usuariosArray.splice(i,1)
 
+    // Mediante el SweetAlert mostramos un mensaje al eliminar un usuario
     Swal.fire({
       title: '¿Estas seguro?',
       text: "No podras deshacer los cambios",

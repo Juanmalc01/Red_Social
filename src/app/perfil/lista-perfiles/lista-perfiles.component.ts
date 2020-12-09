@@ -21,9 +21,9 @@ export class ListaPerfilesComponent implements OnInit {
   // Creamos un emisor de eventos que enviará el usuario creado
   @Output() usuarioEvent = new EventEmitter<Usuarios>();
 
-  //inicializo la variable formBuilder
+  // Inicializo la variable formBuilder
   constructor(private formBuilder: FormBuilder) {
-    //pongo las condiciones de los campos
+    // Pongo las condiciones de los campos
     this.user = this.formBuilder.group({
 
       nombre: ['', Validators.required],
@@ -36,7 +36,7 @@ export class ListaPerfilesComponent implements OnInit {
     });
   }
 
-  //creo la variable user donde almaceno los datos que recibo del formulario
+  // Creo la variable user donde almaceno los datos que recibo del formulario
   user: FormGroup;
   submitted = false;
 
@@ -47,17 +47,17 @@ export class ListaPerfilesComponent implements OnInit {
 
   }
 
-   // creamos un metodo para facilitar el acceso a los controles de formulario desde la plantilla
+   // Creamos un metodo para facilitar el acceso a los controles de formulario desde la plantilla
    get f(){
     return this.user.controls;
   }
 
 
-  //metodo enviar
+  // Metodo enviar
   enviarDatos(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra){
 
     this.submitted = true;
-    //si algun campo no cumple las condiciones
+    // Si algun campo no cumple las condiciones
     if(this.user.invalid){
       return;
     }
@@ -66,8 +66,8 @@ export class ListaPerfilesComponent implements OnInit {
 
     this.guardar(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra);
 
-    //si todos los campos son correctos muestra la siguiente ventana emergente
-      Swal.fire('Usuario creado correctamente B)');
+    // Si todos los campos son correctos muestra la siguiente ventana emergente
+      Swal.fire('Usuario creado correctamente 🍆');
   }
 
   guardar(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra): void{
