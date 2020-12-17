@@ -26,7 +26,7 @@ export class ListaPerfilesComponent implements OnInit {
     // Pongo las condiciones de los campos
     this.user = this.formBuilder.group({
 
-      nombre: ['', Validators.required],
+       nombre: ['', Validators.required],
       apellidos: ['', Validators.required],
       edad:  ['', Validators.required],
       descripcion: ['', [Validators.required,Validators.minLength(4)]],
@@ -55,12 +55,13 @@ export class ListaPerfilesComponent implements OnInit {
 
   // Metodo enviar
   enviarDatos(Vnombre, Vapellido, Vedad, Vdesc, Vemail, Vcontra, VConfirmContra){
-
+    this.user;
     this.submitted = true;
     // Si algun campo no cumple las condiciones
     if(this.user.invalid){
       return;
     }
+
 
 
 

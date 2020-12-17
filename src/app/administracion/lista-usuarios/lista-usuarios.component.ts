@@ -23,7 +23,6 @@ export class ListaUsuariosComponent implements OnInit {
 
   // Esta funcion elimina un usuario
   deleteUsuario(i) {
-    this.usuariosArray.splice(i,1)
 
     // Mediante el SweetAlert mostramos un mensaje al eliminar un usuario
     Swal.fire({
@@ -36,6 +35,8 @@ export class ListaUsuariosComponent implements OnInit {
       confirmButtonText: 'Si, eliminalo'
     }).then((result) => {
       if (result.isConfirmed) {
+        this.usuariosArray.splice(i,1)
+
         Swal.fire(
           'Eliminado correctamente',
           'El usuario a sido eliminado',

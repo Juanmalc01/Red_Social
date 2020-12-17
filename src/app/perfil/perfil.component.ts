@@ -38,7 +38,7 @@ export class PerfilComponent implements OnInit {
     // Ponemos el valor en null para que desaparezcan los detalles
     this.usuarioSelected = null;
 
-    // Buscamos un personaje con el mismo nombre y lo editamos
+    // Buscamos un usuario con el mismo nombre y lo editamos
     for (let i = 0; i < this.usuariosArray.length; i++) {
       if (this.usuariosArray[i].nombre === usuario.nombre) {
         this.usuariosArray[i].apellidos = usuario.apellidos;
